@@ -1,0 +1,8 @@
+handler: YoutubeCorn/index.main
+package:
+  individually: true
+  artifact: "./dist/YoutubeCorn.zip"
+name: YoutubeCorn-${self:provider.stage}
+events:
+  - schedule:    
+      rate: rate(1 minute)
