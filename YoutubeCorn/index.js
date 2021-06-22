@@ -52,6 +52,9 @@ const main = async () => {
             publishedAt: itemDetails.publishedAt,
             title: itemDetails.title,
             description: itemDetails.description,
+            thumbnails: itemDetails.thumbnails,
+            channelTitle: itemDetails.channelTitle,
+            channelId: itemDetails.channelId,
           },
         };
         promises.push(putItem(insertQuery));

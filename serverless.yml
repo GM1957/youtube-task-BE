@@ -11,6 +11,7 @@ provider:
     REGION: ${self:provider.region}
     SERVICE_NAME: "${self:service}-${self:provider.stage}"
     STAGE: "${self:provider.stage, dev}"
+  iamRoleStatements: ${file(./Resources/LambdaRole.yml)}  
 
 plugins:
   - serverless-pseudo-parameters
@@ -19,6 +20,7 @@ plugins:
 
 functions:
   YoutubeCorn: ${file(./Resources/LambdaResources/YoutubeCorn.yml)}
+  YouTubeData: ${file(./Resources/LambdaResources/YouTubeData.yml)}
 
 resources:
   Resources:

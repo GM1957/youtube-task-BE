@@ -1,0 +1,21 @@
+handler: YouTubeData/index.main
+package:
+  individually: true
+  artifact: "./dist/YouTubeData.zip"
+name: YouTubeData-${self:provider.stage}
+events:
+  - http:
+      path: /search/youtube-data/{search_input}/{fetch_limit}/{last_evaluated_key}
+      method: GET
+      cors: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "action": "YoutubeDataSearch",
+            "searchInput": "$input.params(''search_input'')",
+            "limit": "$input.params(''fetch_limit'')",
+            "LastEvaluatedKey": "$input.params(''last_evaluated_key'')"
+            }'
+      response: ${file(./Resources/LambdaResponses.yml)}

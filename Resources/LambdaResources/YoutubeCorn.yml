@@ -5,4 +5,4 @@ package:
 name: YoutubeCorn-${self:provider.stage}
 events:
   - schedule:    
-      rate: rate(1 minute)
+      rate: rate(1 day)
